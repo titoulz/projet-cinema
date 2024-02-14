@@ -41,14 +41,14 @@ foreach ($films as $film) {
     $genre= $film['genre'];
     $duree= $film['durée'];
     $résumé=$film['résumé'];
-}
 ?>
+
 <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col">
         <div class="card">
             <img src="<?php $image?> class="card-img-top" alt="...">
             <div class="card-body">
-                <h5 class="card-title"><?php $titre?>/h5>
+                <h5 class="card-title"><?php echo $titre>/h5>
                 <p class="card-text"><?php $résumé ?></p>
                     <p class="card-footers"> <?php $date ?></p>
             </div>
@@ -56,4 +56,7 @@ foreach ($films as $film) {
     </div>
 </div>
 
+<?php
+}
+?>
 
