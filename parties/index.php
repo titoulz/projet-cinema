@@ -37,9 +37,10 @@ foreach ($films as $film) {
 foreach ($films as $film) {
     $titre= $film['titre'];
     $image= $film['image'];
-    $annee= $film['annee'];
+    $date= $film['date'];
     $genre= $film['genre'];
     $duree= $film['durée'];
+    $résumé=$film['résumé'];
 }
 ?>
 <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -48,7 +49,8 @@ foreach ($films as $film) {
             <img src="<?php $image?> class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title"><?php $titre?>/h5>
-                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><?php $résumé ?></p>
+                    <p class="card-footers"> <?php $date ?></p>
             </div>
         </div>
     </div>
