@@ -1,8 +1,4 @@
-<?php   /*
-////////////////////////////////////////////////////////////////
-////////////////////////MAIN///////////////////////////////////
-////////////////////////////////////////////////////////////////
-*/?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +6,6 @@
     <title>index.html</title>
 </head>
 <body>
-//bootstrap stylesheet and js files
 <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 <script src="../assets/js/bootstrap.min.js"></script>
 
@@ -42,9 +37,9 @@
         </ul>
     </div>
 </nav>
-<h1>Projet Cinema</h1>
+<h1 class="text-center">Projet Cinema</h1>
 
-<h1>LISTE DES FILMS</h1>
+<h1 class="text-center">LISTE DES FILMS</h1>
 
 </body>
 </html>
