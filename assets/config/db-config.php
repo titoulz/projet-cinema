@@ -1,7 +1,7 @@
 <?php
 //connexion à la base de données
 const DB_HOST = "localhost:3306";
-const DB_NAME = "db_intro";
+const DB_NAME = "db_film";
 const DB_USER= "root";
 const DB_PASSWORD="";
 
