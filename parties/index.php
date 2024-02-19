@@ -26,7 +26,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#filmlist">Liste des films <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Features</a>
@@ -37,6 +37,7 @@
         </ul>
     </div>
 </nav>
+<section id="filmlist">
 <h1 class="text-center">Projet Cinema</h1>
 
 <h1 class="text-center">LISTE DES FILMS</h1>
@@ -77,16 +78,17 @@ foreach ($films as $film) {
                 $titre= $film['titre'];
                 $image= $film['image'];
                 $date= $film['date'];
-                $duree= $film['durée'];
+                $durée= $film['durée'];
                 $résumé=$film['résumé'];
                 ?>
                 <div class="col-md-6 col-lg-2">
                     <div class="card">
                         <img src="<?php echo $image?>" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $titre?></h5>
+                            <h5 class="card-title fw-bold" ><?php echo  strtoupper($titre)?></h5>
                             <p class="card-text"><?php echo $résumé ?></p>
-                            <p class="card-footers"> <?php echo $date ?></p>
+                            <p class="card-text fw-bold"><?php echo $durée ?> minutes ⏱️</p>
+                            <p class="card-footers fw-light">🗓️ <?php echo $date ?>🗓️</p>
                         </div>
                     </div>
                 </div>
@@ -94,3 +96,4 @@ foreach ($films as $film) {
             }
             ?>
         </div>
+</section>
