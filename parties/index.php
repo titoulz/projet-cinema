@@ -71,29 +71,28 @@ foreach ($films as $film) {
 ////////////////////////CARDS///////////////////////////////////
 ////////////////////////////////////////////////////////////////
 ?>
-
-        <div class="row">
-            <?php
-            foreach ($films as $film) {
-                $titre= $film['titre'];
-                $image= $film['image'];
-                $date= $film['date'];
-                $durée= $film['durée'];
-                $résumé=$film['résumé'];
-                ?>
-                <div class="col-md-6 col-lg-2">
-                    <div class="card">
-                        <img src="<?php echo $image?>" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title fw-bold" ><?php echo  strtoupper($titre)?></h5>
-                            <p class="card-text"><?php echo $résumé ?></p>
-                            <p class="card-text fw-bold"><?php echo $durée ?> minutes ⏱️</p>
-                            <p class="card-footers fw-light">🗓️ <?php echo $date ?>🗓️</p>
-                        </div>
-                    </div>
+<div class="row">
+    <?php
+    foreach ($films as $film) {
+        $titre= $film['titre'];
+        $image= $film['image'];
+        $date= $film['date'];
+        $durée= $film['durée'];
+        $résumé=$film['résumé'];
+        ?>
+        <div class="col-md-6 col-lg-2">
+            <div class="card">
+                <img src="<?php echo $image?>" class="card-img-top" alt="...">
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold" ><?php echo  strtoupper($titre)?></h5>
+                    <p class="card-text fw-bold"><?php echo $durée ?> minutes ⏱️</p>
+                    <p class="card-footers fw-light">🗓️ <?php echo $date ?>🗓️</p>
+                    <a href="detail_film.php?id=<?php echo $film['id']?>" class="btn btn-primary">Detail</a>
                 </div>
-                <?php
-            }
-            ?>
+            </div>
         </div>
+        <?php
+    }
+    ?>
+</div>
 </section>
