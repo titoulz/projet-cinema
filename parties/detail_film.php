@@ -29,13 +29,14 @@ $film = $requetePDO->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
-    <div class="card" style="width: 40rem;">
+    <div class="card" style="width: 30rem" >
         <img src="<?php echo $film['image']?>" class="card-img-top" alt="...">
-        <div class="card-body">
+        <div class="card-body text-center">
             <h5 class="card-title"><?php echo  strtoupper($film['titre'])?></h5>
             <p class="card-text"><?php echo $film['résumé'] ?></p>
             <p class="card-text"><?php echo $film['durée'] ?> minutes ⏱️</p>
             <p class="card-text">🗓️ <?php echo $film['date'] ?>🗓️</p>
+            <a href="index.php" class="btn btn-primary">Retour</a>
         </div>
     </div>
 </div>
