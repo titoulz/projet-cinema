@@ -6,8 +6,8 @@
     <title>index.html</title>
 </head>
 <body>
-<link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-<script src="../assets/js/bootstrap.min.js"></script>
+<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+<script src="./assets/js/bootstrap.min.js"></script>
 
 <?php
 /*
@@ -29,10 +29,13 @@
                 <a class="nav-link" href="#filmlist">Liste des films <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="../parties/formulairefilm.php">ajouter un film</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
+                <a class="nav-link" href="../parties/connexion.php">se connecter</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="../parties/register.php">s'inscrire</a>
             </li>
         </ul>
     </div>
@@ -46,7 +49,7 @@
 </html>
 <?php
 //connexion à la base de données
-require_once "../assets/config/db-config.php";
+require_once "./assets/config/db-config.php";
 //requête SQL
 $sql = "SELECT * FROM films";
 
@@ -81,7 +84,7 @@ foreach ($films as $film) {
                     <h5 class="card-title fw-bold" ><?php echo  strtoupper($titre)?></h5>
                     <p class="card-text fw-bold"><?php echo $durée ?> minutes ⏱️</p>
                     <p class="card-footers fw-light">🗓️ <?php echo $date ?>🗓️</p>
-                    <a href="detail_film.php?id=<?php echo $film['id']?>" class="btn btn-primary">Detail</a>
+                    <a href="parties/detail_film.php?id=<?php echo $film['id']?>" class="btn btn-primary">Detail</a>
                 </div>
             </div>
         </div>
