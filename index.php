@@ -19,14 +19,14 @@
 
 ?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Projet Cinema</a>
+    <a class="navbar-brand" href="#filmlist">Projet Cinema</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#filmlist">Liste des films <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="#filmlist">Liste des films (current) </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../parties/formulairefilm.php">ajouter un film</a>
@@ -77,7 +77,7 @@ foreach ($films as $film) {
         $durée= $film['durée'];
         $résumé=$film['résumé'];
         ?>
-        <div class="col-md-6 col-lg-2">
+        <div class="col-sm-6 col-md-3 col-lg-2 mb-3">
             <div class="card">
                 <img src="<?php echo $image?>" class="card-img-top" alt="...">
                 <div class="card-body text-center">

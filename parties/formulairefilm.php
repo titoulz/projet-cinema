@@ -2,6 +2,7 @@
 //formulaire d'ajout de film par l'utilisateur
 //connexion à la base de données
 require_once "../assets/config/db-config.php";
+$titre = '';
 $résumé = '';
 $durée = '';
 $date = '';
@@ -51,17 +52,17 @@ if (empty($erreurs)) {
     <title>index.html</title>
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Projet Cinema</a>
+    <a class="navbar-brand" href="../index.php">Projet Cinema</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="../index.php">Liste des films <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="../index.php">Liste des films </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../formulairefilm.php">ajouter un film</a>
+                <a class="nav-link" href="../formulairefilm.php">ajouter un film (current)</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="connexion.php">se connecter</a>
@@ -75,11 +76,17 @@ if (empty($erreurs)) {
 <body>
 <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 <script src="../assets/js/bootstrap.min.js"></script>
+<div class="container align-content-center " >
 <h1 class="text-center">AJOUTER UN FILM</h1>
 <form method="POST" novalidate ">
     <div class="mb-3">
         <label for="exampletitre" class="form-label">titre</label>
-        <input type="text" name="titre" class="form-control" id="exampletitre" placeholder="votre titre"
+        <input type="text"
+               name="titre"
+               class="form-control"
+               id="exampletitre"
+               placeholder="votre titre"
+        value="<?= $titre ?>"
                style="width: 500px">
     </div>
     <div class="mb-3">
@@ -134,4 +141,5 @@ if (empty($erreurs)) {
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 </body>
+</div>
 </html>
