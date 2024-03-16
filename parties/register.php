@@ -95,16 +95,13 @@ if (empty($erreurs)){
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="../index.php">Liste des films <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="../index.php">Liste des films </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../parties/formulairefilm.php">ajouter un film</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../parties/connexion.php">se connecter</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="../parties/register.php">s'inscrire</a>
+                <a class="nav-link" href="../parties/connexion.php"> se connecter</a>
             </li>
         </ul>
     </div>
@@ -129,6 +126,7 @@ echo "<div class='container-sm d-flex justify-content-center'>";
     echo "</div>";
 }
 ?>
+
 <form method="post">
 <section class="vh-100" style="background-color: #eee;">
     <div class="container h-100">

@@ -25,9 +25,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#filmlist">Liste des films (current) </a>
-            </li>
             <li class="nav-item">
                 <a class="nav-link" href="../parties/formulairefilm.php">ajouter un film</a>
             </li>
@@ -35,7 +32,7 @@
                 <a class="nav-link" href="../parties/connexion.php">se connecter</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="../parties/register.php">s'inscrire</a>
+                <a class="nav-link " href="../parties/register.php"> ®s'inscrire® </a>
             </li>
         </ul>
     </div>

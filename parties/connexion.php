@@ -34,6 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>index.html</title>
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/assets/js/bootstrap.min.js"></script>
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="../index.php">Projet Cinema</a>
@@ -43,16 +45,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="../index.php/#filmlist">Liste des films </a>
+                <a class="nav-link" href="../index.php">Liste des films </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="formulairefilm.php">ajouter un film</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="connexion.php">se connecter (current)</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="register.php">s'inscrire</a>
+                <a class="nav-link " href="register.php"> ®s'inscrire® </a>
             </li>
         </ul>
     </div>
@@ -60,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 <script src="../assets/js/bootstrap.min.js"></script>
+<div class="col-md-6 offset-md-3">
 <form method="POST">
     <div class="mb-3">
         <label for="exampleemail" class="form-label">email</label>
@@ -82,5 +82,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+</div>
 </body>
 </html>

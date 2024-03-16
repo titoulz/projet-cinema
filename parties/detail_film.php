@@ -24,7 +24,7 @@
                 <a class="nav-link" href="parties/connexion.php">se connecter</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="parties/register.php">s'inscrire</a>
+                <a class="nav-link " href="parties/register.php"> ®s'inscrire® </a>
             </li>
         </ul>
     </div>

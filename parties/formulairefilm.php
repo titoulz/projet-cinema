@@ -62,13 +62,10 @@ if (empty($erreurs)) {
                 <a class="nav-link" href="../index.php">Liste des films </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../formulairefilm.php">ajouter un film (current)</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="connexion.php">se connecter</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link " href="register.php">s'inscrire</a>
+                <a class="nav-link " href="register.php"> ®s'inscrire® </a>
             </li>
         </ul>
     </div>
