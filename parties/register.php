@@ -16,14 +16,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 //3. Valider les données:
 $erreurs = [];
-if (empty($pseudo)){
-    $erreurs['pseudo'] = "le pseudo est obligatoire";
+$mdpErrors = [];
+
+if (strlen($mdp) < 8) {
+    $mdpErrors[] = "Le mot de passe doit comporter au moins 8 caractères";
 }
-if (empty($mdp)){
-    $erreurs['mdp'] = "le mot de passe est obligatoire";
+if (!preg_match('/[A-Z]/', $mdp)) {
+    $mdpErrors[] = "Le mot de passe doit contenir au moins une lettre majuscule";
 }
-if (empty($email)){
-    $erreurs['email'] = "l'email est obligatoire";
+if (!preg_match('/[a-z]/', $mdp)) {
+    $mdpErrors[] = "Le mot de passe doit contenir au moins une lettre minuscule";
+}
+if (!preg_match('/[0-9]/', $mdp)) {
+    $mdpErrors[] = "Le mot de passe doit contenir au moins un chiffre";
+}
+if (!preg_match('/[\W]/', $mdp)) {
+    $mdpErrors[] = "Le mot de passe doit contenir au moins un caractère spécial";
+}
+
+if (!empty($mdpErrors)) {
+    $erreurs['mdp'] = $mdpErrors;
 }
 if (empty($mdpconfirm)){
     $erreurs['mdpconfirm'] = "la confirmation du mot de passe est obligatoire";
@@ -100,13 +112,20 @@ if (empty($erreurs)){
 <body>
 <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 <script src="../assets/js/bootstrap.min.js"></script>
-
 <?php
 if (!empty($erreurs)){
-    echo "<div class='alert alert-danger'>";
-    foreach ($erreurs as $erreur){
-        echo "<p>$erreur</p>";
-    }
+echo "<div class='container-sm d-flex justify-content-center'>";
+    echo "<div class='alert alert-danger w-50 p-3'>";
+        foreach ($erreurs as $erreur){
+        if (is_array($erreur)) {
+        foreach ($erreur as $err) {
+        echo "<p class='mb-0'>$err</p>";
+        }
+        } else {
+        echo "<p class='mb-0'>$erreur</p>";
+        }
+        }
+        echo "</div>";
     echo "</div>";
 }
 ?>
