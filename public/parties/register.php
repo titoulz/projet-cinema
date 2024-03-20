@@ -17,6 +17,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mdpconfirm = isset($_POST['mdpconfirm']) ? $_POST['mdpconfirm'] : null;
 }
 //3. Valider les données:
+
+
 $erreurs = [];
 $mdpErrors = [];
 
