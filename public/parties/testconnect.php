@@ -35,7 +35,7 @@ if ($user){
 </head>
 <body>
 <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../public/assets/js/bootstrap.min.js"></script>
 <form>
     <div class="mb-3">
         <label for="exampleemail" class="form-label">email</label>

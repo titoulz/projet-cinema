@@ -1,7 +1,9 @@
 <?php
 echo(PHP_EOL);
 //1.connexion a la DB
-require_once "../assets/config/db-config.php";
+require_once "../../src/config/db-config.php";
+require_once "header.php";
+require_once "../../src/databases/user.php";
 //2. Récupérer les données
 $email='';
 $mdp='';
@@ -53,24 +55,12 @@ if ($mdp != $mdpconfirm){
 //si tout est ok, on inscrit l'utilisateur
 //verifier si l'email existe
 
-    $sql = "SELECT * FROM user WHERE email = :email";
-    $requetePDO=$connexion->prepare($sql);
-    $requetePDO->bindParam(':email', $email);
-    $requetePDO->execute();
-    $user = $requetePDO->fetch(PDO::FETCH_ASSOC);
-    if ($user){
-        $erreurs['email'] = "cet email est déjà utilisé";
-
-    }else{
-        if (empty($erreurs)){
-            //requête SQL
-            $sql = "INSERT INTO user (pseudo, email, mdp) VALUES (:pseudo, :email, :mdp)";
-            //exécution de la requête
-            $requetePDO=$connexion->prepare($sql);
-            $requetePDO->bindParam(':pseudo', $pseudo);
-            $requetePDO->bindParam(':mdp', $mdp);
-            $requetePDO->bindParam(':email', $email);
-            $requetePDO->execute();
+$userExists = emailExists($email);
+if ($userExists){
+    $erreurs['email'] = "cet email est déjà utilisé";
+} else {
+    if (empty($erreurs)){
+        register($pseudo, $email, $mdp);
         echo PHP_EOL."l'inscription a été effectuée avec succès";
     }
 }
@@ -87,28 +77,10 @@ if (empty($erreurs)){
     <meta charset="UTF-8">
     <title>index.html</title>
 </head>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Projet Cinema</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="../index.php">Liste des films </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../parties/formulairefilm.php">ajouter un film</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="../parties/connexion.php"> se connecter</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+
 <body>
 <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../public/assets/js/bootstrap.min.js"></script>
 <?php
 if (!empty($erreurs)){
 echo "<div class='container-sm d-flex justify-content-center'>";
