@@ -22,6 +22,9 @@ function addfilms($titre, $résumé, $durée, $date, $pays, $image){
     $requetePDO->execute();
 }
 function getFilmById($id){
+    if (idExists($id) == false){
+        header('Location: ../index.php' );
+    }
     $connexion=getConnexion();
     $sql = "SELECT * FROM films WHERE id = :id";
     $requetePDO=$connexion->prepare($sql);
@@ -30,3 +33,17 @@ function getFilmById($id){
     return $requetePDO->fetch(PDO::FETCH_ASSOC);
 }
 
+//conversion de la date en français
+function dateToFrench($date){
+    $date = new DateTime($date);
+    return $date->format('d/m/Y');
+}
+//verif si l'id existe
+function idExists($id){
+    $connexion=getConnexion();
+    $sql = "SELECT * FROM films WHERE id = :id";
+    $requetePDO=$connexion->prepare($sql);
+    $requetePDO->bindParam(':id', $id);
+    $requetePDO->execute();
+    return $requetePDO->fetch(PDO::FETCH_ASSOC);
+}

@@ -11,8 +11,6 @@
 
 
 <section id="filmlist">
-<h1 class="text-center">LISTE DES FILMS</h1>
-
 </body>
 </html>
 <?php
@@ -25,19 +23,16 @@ require_once "parties/header.php";
 $films=getFilms();
 ?>
 
-////////////////////////////////////////////////////////////////
-////////////////////////CARDS///////////////////////////////////
-////////////////////////////////////////////////////////////////
-?>
 <h1 class="text-center zzz"> LISTE DES FILMS</h1>
 <div class="row">
     <?php
     foreach ($films as $film) {
         $titre= $film['titre'];
         $image= $film['image'];
-        $date= $film['date'];
+        $date=$film['date'];
         $durée= $film['durée'];
         $résumé=$film['résumé'];
+        $date=dateToFrench($date)
         ?>
         <div class="col-sm-6 col-md-3 col-lg-2 mb-3">
             <div class="card" >

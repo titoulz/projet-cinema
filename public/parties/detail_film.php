@@ -18,7 +18,8 @@ require_once "header.php";
 $id = $_GET['id'];
 require_once "../../src/databases/film.php";
 $film = getfilmById($id);
-
+$date=$film['date'];
+$date=dateToFrench($date);
 //récupération des résultats
 
 require_once "header.php";
@@ -33,7 +34,7 @@ require_once "header.php";
             <h2 class="mb-3"><?php echo  strtoupper($film['titre'])?></h2>
             <p><strong>Synopsys : <br></strong> <?php echo $film['résumé'] ?></p>
             <p><strong>Durée :</strong> <?php echo $film['durée'] ?> minutes ⏱️</p>
-            <p><strong>Date de sortie :</strong> 🗓️ <?php echo $film['date'] ?>🗓️</p>
+            <p><strong>Date de sortie :</strong> 🗓️ <?php echo $date ?></p>
             <p><strong>Pays :</strong> 🌍 <?php echo $film['pays'] ?>🌍</p>
             <a href="../index.php" class="btn btn-primary mt-3">Retour</a>
         </div>

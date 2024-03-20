@@ -33,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>index.html</title>
     <link href="/public/assets/css/bootstrap.min.css" rel="stylesheet">
     <script src="/public/assets/js/bootstrap.min.js"></script>
+    <link href="../assets/css/stylesheet.css" rel="stylesheet">
 </head>
 
 <body>

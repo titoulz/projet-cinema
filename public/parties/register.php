@@ -83,6 +83,7 @@ if (empty($erreurs)){
 <body>
 <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 <script src="../public/assets/js/bootstrap.min.js"></script>
+<link href="../assets/css/stylesheet.css" rel="stylesheet">
 <?php
 if (!empty($erreurs)){
 echo "<div class='container-sm d-flex justify-content-center'>";

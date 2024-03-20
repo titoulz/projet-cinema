@@ -49,3 +49,6 @@ body{
 .navbar{
     background-color: black;
 }
+body {
+    padding-top: 56px; /* Mettez ici la hauteur de votre navbar */
+}
