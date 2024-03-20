@@ -13,7 +13,7 @@ function register($pseudo, $email, $mdp){
     $requetePDO->bindParam(3, $mdp);
     $requetePDO->execute();
 }
-//verigier si l'email existe
+//verifier si l'email existe
 function emailExists($email){
     $connexion=getConnexion();
     $sql = "SELECT * FROM user WHERE email = :email";
