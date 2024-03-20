@@ -2,6 +2,8 @@
 //connexion à la base de données
 require_once __DIR__."/../config/db-config.php";
 //fichier de fonctions pour les films
+
+//fonction pour récupérer tous les films
 function getFilms(){
     $connexion=getConnexion();
     $sql = "SELECT * FROM films";
@@ -9,6 +11,7 @@ function getFilms(){
     $requetePDO->execute();
     return $requetePDO->fetchAll(PDO::FETCH_ASSOC);
 }
+//fonction pour ajouter un film
 function addfilms($titre, $résumé, $durée, $date, $pays, $image){
     $connexion=getConnexion();
     $sql = "INSERT INTO films (titre, résumé, durée, date, pays, image) VALUES (?, ?, ?, ?, ?, ?)";
@@ -21,6 +24,7 @@ function addfilms($titre, $résumé, $durée, $date, $pays, $image){
     $requetePDO->bindParam(6, $image);
     $requetePDO->execute();
 }
+//fonction pour récupérer un film par son id
 function getFilmById($id){
     if (idExists($id) == false){
         header('Location: ../index.php' );
@@ -53,3 +57,4 @@ function minutesToHours($minutes){
     $minutes = ($minutes % 60);
     return $heures.'h'.$minutes;
 }
+?>

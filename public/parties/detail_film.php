@@ -12,8 +12,6 @@
 //connexion à la base de données
 require_once "../../src/config/db-config.php";
 require_once "header.php";
-
-//récupération de l'id du film
 //utiliser la fonction getfilmById
 $id = $_GET['id'];
 require_once "../../src/databases/film.php";
@@ -23,11 +21,8 @@ $date=dateToFrench($date);
 //récupération des résultats
 $durée = $film['durée'];
 $durée= minutesToHours($durée);
-
-
 require_once "header.php";
 ?>
-
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-6">
@@ -45,7 +40,6 @@ require_once "header.php";
         </div>
     </div>
 </div>
-
 </body>
 </html>
 <link href="assets/css/stylesheet.css" rel="stylesheet">
