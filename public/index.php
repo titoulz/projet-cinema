@@ -32,14 +32,15 @@ $films=getFilms();
         $date=$film['date'];
         $durée= $film['durée'];
         $résumé=$film['résumé'];
-        $date=dateToFrench($date)
+        $date=dateToFrench($date);
+        $durée= minutesToHours($durée);
         ?>
         <div class="col-sm-6 col-md-3 col-lg-2 mb-3">
             <div class="card" >
                 <img src="<?php echo $image?>" class="card-img-top img-fluid" alt="..." height="300" width="400">
                 <div class="card-body text-center">
                     <h5 class="card-title fw-bold" ><?php echo  strtoupper($titre)?></h5>
-                    <p class="card-text fw-bold">  ⏱️<?php echo $durée ?>minutes</p>
+                    <p class="card-text fw-bold">  ⏱️<?php echo $durée ?></p>
                     <p class="card-footers fw-light">🗓️ <?php echo $date ?></p>
                     <a href="parties/detail_film.php?id=<?php echo $film['id']?>" class="btn btn-primary">Detail</a>
                 </div>

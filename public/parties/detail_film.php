@@ -21,6 +21,9 @@ $film = getfilmById($id);
 $date=$film['date'];
 $date=dateToFrench($date);
 //récupération des résultats
+$durée = $film['durée'];
+$durée= minutesToHours($durée);
+
 
 require_once "header.php";
 ?>
@@ -28,14 +31,16 @@ require_once "header.php";
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-6">
+            <br>
             <img src="<?php echo $film['image']?>" class="img-fluid" style="border: 4px solid #000;" alt="...">
         </div>
         <div class="col-md-6">
+            <br>
             <h2 class="mb-3"><?php echo  strtoupper($film['titre'])?></h2>
-            <p><strong>Synopsys : <br></strong> <?php echo $film['résumé'] ?></p>
-            <p><strong>Durée :</strong> <?php echo $film['durée'] ?> minutes ⏱️</p>
+            <p><strong>Durée :</strong> <?php echo $durée ?>  ⏱️</p>
             <p><strong>Date de sortie :</strong> 🗓️ <?php echo $date ?></p>
             <p><strong>Pays :</strong> 🌍 <?php echo $film['pays'] ?>🌍</p>
+            <p><strong>Synopsys : <br></strong> <?php echo $film['résumé'] ?></p>
             <a href="../index.php" class="btn btn-primary mt-3">Retour</a>
         </div>
     </div>

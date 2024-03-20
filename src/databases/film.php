@@ -47,3 +47,9 @@ function idExists($id){
     $requetePDO->execute();
     return $requetePDO->fetch(PDO::FETCH_ASSOC);
 }
+//minutes en heures
+function minutesToHours($minutes){
+    $heures = floor($minutes / 60);
+    $minutes = ($minutes % 60);
+    return $heures.'h'.$minutes;
+}
