@@ -21,6 +21,7 @@ require_once '../base.php';
 require_once BASE_PROJET .'/src/config/db-config.php';
 require_once "parties/header.php";
 $films=getFilms();
+session_start();
 ?>
 
 <h1 class="text-center zzz"> LISTE DES FILMS</h1>

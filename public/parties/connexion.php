@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 //connexion à la base de données
 require_once "../../src/config/db-config.php";
 ?>
@@ -31,15 +32,36 @@ if (empty($mdp)){
 // Comparer l'email formulaire avec l'email bdd pour pouvoir trouver le mdp bdd (relier a l'email bdd)
 // comparer l'email bdd avec l'email formulaire
 // comparer a l'aide de la fonction password_verify le mdp bdd avec le mdp formulaire
+//debug mode
 
 if (empty($erreurs)){
-    $_SESSION=[
-        'email' => $email,
-        'mdp' => $mdp
-    ];
-    echo $_SESSION["email"];
-    echo $_SESSION["mdp"];
-    header('Location: ../index.php' );
+    $user = userExiste($email);
+    if ($user && password_verify($mdp, $user['mdp'])) {
+        $_SESSION=[
+            'email' => $email,
+            'mdp' => $mdp
+        ];
+        header('Location: ../index.php' );
+        exit; // Ajoutez cette ligne
+    } else {
+        $_SESSION['error'] = "Email ou mot de passe incorrect";
+        header('Location: connexion.php' );
+        exit; // Ajoutez cette ligne
+    }
+}
+if (empty($erreurs)){
+    $user = userExiste($email);
+    var_dump($user); // Check the value of $user
+    if ($user && password_verify($mdp, $user['mdp'])) {
+        // ...
+    } else {
+        // ...
+    }
+}if ($user && password_verify($mdp, $user['mdp'])) {
+    // ...
+} else {
+    var_dump(password_verify($mdp, $user['mdp'])); // Check the result of password_verify
+    // ...
 }
 //regarder si le tableau $user est vide et aller chercher les données de l'utilisateur
 //$user = userExiste();
@@ -66,15 +88,12 @@ if (empty($erreurs)){
     <?php
     if (isset($_SESSION['success'])) {
         echo '<div class="alert alert-success">' . $_SESSION['success'] . '</div>';
-        unset($_SESSION['success']); // remove the message after displaying it
     }
 
     if (isset($_SESSION['error'])) {
         echo '<div class="alert alert-danger">' . $_SESSION['error'] . '</div>';
-        unset($_SESSION['error']); // remove the message after displaying it
     }
     ?>
-
     <form method="POST">
     <div class="mb-3">
         <label for="exampleemail" class="form-label">email</label>
@@ -100,3 +119,5 @@ if (empty($erreurs)){
 </div>
 </body>
 </html>
+
+

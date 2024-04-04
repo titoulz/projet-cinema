@@ -2,8 +2,8 @@
 //connexion à la base de données
 const DB_HOST = "localhost:3306";
 const DB_NAME = "db_cinema";
-const DB_USER= "root";
-const DB_PASSWORD="";
+const DB_USER= "root"; // replace with your MySQL username
+const DB_PASSWORD=""; // replace with your MySQL password
 
 function getConnexion(): PDO{
     $pdo = new PDO(
