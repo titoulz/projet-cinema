@@ -35,6 +35,7 @@ if (empty($mdp)){
 //debug mode
 if (empty($erreurs)){
     $user = userExiste($email);
+    echo "User record: ";
     var_dump($user); // Debug: Check the value of $user
     if ($user && array_key_exists('mdp', $user) && password_verify($mdp, $user['mdp'])) {
         $_SESSION=[
@@ -42,16 +43,17 @@ if (empty($erreurs)){
             'mdp' => $mdp,
         ];
         header('Location: ../index.php' );
-            exit;
-        //header('Location: ../index.php' );
-        //exit; // Ajoutez cette ligne
+        exit;
     } else {
-        var_dump($email); // Debug: Check the value of $email
-        var_dump($mdp); // Debug: Check the value of $mdp
+        echo "Hashed password: ";echo PHP_EOL;
+       echo (password_hash($mdp, PASSWORD_DEFAULT));
+        echo "Email User: ";
+        var_dump($email); // Debug: Check the value of $email User
+        echo "Password User: ";
+        var_dump($mdp); // Debug: Check the value of $mdp User
+        echo "Result of password_verify: ";
         var_dump(password_verify($mdp, $user['mdp'])); // Debug: Check the result of password_verify
         $_SESSION['error'] = "Email ou mot de passe incorrect";
-        //header('Location: connexion.php' );
-        //exit; // Ajoutez cette ligne
     }
 }
 
