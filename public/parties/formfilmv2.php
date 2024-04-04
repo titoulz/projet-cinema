@@ -37,7 +37,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>index.html</title>
 </head>
-
 <body>
 <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 <script src="../public/assets/js/bootstrap.min.js"></script>
@@ -117,10 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                     id="exampleInputPassword1"
                                     placeholder="lien vers votre image">
                             </div>
-
-
-
-                                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                            <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                         <button type="submit" class="btn btn-primary">ajouter le film</button>
                                     </div>
 

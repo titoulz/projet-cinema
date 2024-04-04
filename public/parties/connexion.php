@@ -33,41 +33,30 @@ if (empty($mdp)){
 // comparer l'email bdd avec l'email formulaire
 // comparer a l'aide de la fonction password_verify le mdp bdd avec le mdp formulaire
 //debug mode
-
 if (empty($erreurs)){
     $user = userExiste($email);
-    if ($user && password_verify($mdp, $user['mdp'])) {
+    var_dump($user); // Debug: Check the value of $user
+    if ($user && array_key_exists('mdp', $user) && password_verify($mdp, $user['mdp'])) {
         $_SESSION=[
             'email' => $email,
-            'mdp' => $mdp
+            'mdp' => $mdp,
         ];
         header('Location: ../index.php' );
-        exit; // Ajoutez cette ligne
+            exit;
+        //header('Location: ../index.php' );
+        //exit; // Ajoutez cette ligne
     } else {
+        var_dump($email); // Debug: Check the value of $email
+        var_dump($mdp); // Debug: Check the value of $mdp
+        var_dump(password_verify($mdp, $user['mdp'])); // Debug: Check the result of password_verify
         $_SESSION['error'] = "Email ou mot de passe incorrect";
-        header('Location: connexion.php' );
-        exit; // Ajoutez cette ligne
+        //header('Location: connexion.php' );
+        //exit; // Ajoutez cette ligne
     }
 }
-if (empty($erreurs)){
-    $user = userExiste($email);
-    var_dump($user); // Check the value of $user
-    if ($user && password_verify($mdp, $user['mdp'])) {
-        // ...
-    } else {
-        // ...
-    }
-}if ($user && password_verify($mdp, $user['mdp'])) {
-    // ...
-} else {
-    var_dump(password_verify($mdp, $user['mdp'])); // Check the result of password_verify
-    // ...
-}
+
 //regarder si le tableau $user est vide et aller chercher les données de l'utilisateur
 //$user = userExiste();
-
-
-
 
 ?>
 <!DOCTYPE html>

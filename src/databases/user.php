@@ -36,21 +36,20 @@ function fetchAllUsers(){
 //login function
 function userExiste($email) {
     // Assuming $conn is your database connection
-    global $conn;
+    $connexion=getConnexion();
 
     // Prepare a SELECT statement
-    $stmt = $connexiong->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->bind_param("s", $email);
+    $sql = "SELECT * FROM user WHERE email = :email";
 
+    $requetePDO=$connexion->prepare($sql);
+    $requetePDO->bindParam(':email', $email); // Bind the :email placeholder to the $email variable
     // Execute the statement
-    $stmt->execute();
-
+    $requetePDO->execute();
     // Get the result
-    $result = $stmt->get_result();
-
+    $result = $requetePDO->fetchAll();
     // If a user was found, return the user record
-    if ($result->num_rows > 0) {
-        return $result->fetch_assoc();
+    if (count($result) > 0) {
+        return $result[0];
     }
 
     // If no user was found, return null
