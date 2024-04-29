@@ -64,3 +64,12 @@ function creerSession($user){
 function deconnecter(){
     unset($_SESSION['user']);
 }
+function addComment($userId, $movieId, $comment){
+    $connexion=getConnexion();
+    $sql = "INSERT INTO comments (user_id, movie_id, comment) VALUES (?, ?, ?)";
+    $requetePDO=$connexion->prepare($sql);
+    $requetePDO->bindParam(1, $userId);
+    $requetePDO->bindParam(2, $movieId);
+    $requetePDO->bindParam(3, $comment);
+    $requetePDO->execute();
+}

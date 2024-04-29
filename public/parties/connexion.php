@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+$_SESSION['email'] = 'test@example.com'; // Replace with a valid user ID from your database
 //connexion à la base de données
 require_once "../../src/config/db-config.php";
 ?>
