@@ -7,6 +7,7 @@
 <body>
 <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 <script src="../public/assets/js/bootstrap.min.js"></script>
+<link href="../assets/css/stylesheet.css" rel="stylesheet">
 
 <?php
 //connexion à la base de données
@@ -44,24 +45,27 @@ $comments = getCommentsByMovieId($movieId); // Get the comments for this movie
             <p><strong>Date de sortie :</strong> 🗓️ <?php echo $date ?></p>
             <p><strong>Pays :</strong> 🌍 <?php echo $film['pays'] ?>🌍</p>
             <p><strong>Synopsys : <br></strong> <?php echo $film['résumé'] ?></p>
+
+    <a href="ajout-commentaire.php?id=<?php echo $film['id']?>" class="btn btn-primary">Ajouter un commentaire</a>
+    <a href="../index.php" class="btn btn-primary mt-3">Retour</a>
             <div class="container mt-5">
                 <?php
                 $averageRating = getAverageRatingByMovieId($movieId);
                 ?>
-                <p><strong>Moyenne des notes :</strong>
-                    <?php for($i = 0; $i < floor($averageRating); $i++): ?>
-                        &#9733; <!-- This is the HTML entity for a star -->
-                    <?php endfor; ?>
-                    <?php if ($averageRating - floor($averageRating) >= 0.5): ?>
-                        &#189; <!-- This is the HTML entity for a half star -->
-                    <?php endif; ?>
-                    <?php for($i = ceil($averageRating); $i < 5; $i++): ?>
-                        &#9734; <!-- This is the HTML entity for an empty star -->
-                    <?php endfor; ?>
-                </p><?php
+                <?php
 $commentCount = getCommentCountByMovieId($movieId);
 ?>
-<p><strong>Nombre de commentaires :</strong> <?php echo $commentCount; ?></p>
+<p<p><strong>Moyenne des notes :</strong>
+    <?php for($i = 0; $i < floor($averageRating); $i++): ?>
+        <span class="average-star">&#9733;</span> <!-- This is the HTML entity for a star -->
+    <?php endfor; ?>
+    <?php if ($averageRating - floor($averageRating) >= 0.5): ?>
+        <span class="average-star">&#189;</span> <!-- This is the HTML entity for a half star -->
+    <?php endif; ?>
+    <?php for($i = ceil($averageRating); $i < 5; $i++): ?>
+        <span class="average-star">&#9734;</span> <!-- This is the HTML entity for an empty star -->
+    <?php endfor; ?>
+</p>><strong>Nombre de commentaires :</strong> <?php echo $commentCount; ?></p>
                 <h2>Commentaires</h2>
                 <?php foreach ($comments as $comment): ?>
                     <div class="card mb-3">
@@ -73,19 +77,18 @@ $commentCount = getCommentCountByMovieId($movieId);
                             <p class="card-text"><?= nl2br(htmlspecialchars($comment['review'])) ?></p>
                             <p class="card-text"><strong>Note :</strong>
                                 <?php for($i = 0; $i < $comment['rating']; $i++): ?>
-                                    &#9733; <!-- This is the HTML entity for a star -->
+                                    <span class="star">&#9733;</span> <!-- This is the HTML entity for a star -->
                                 <?php endfor; ?>
                                 <?php for($i = $comment['rating']; $i < 5; $i++): ?>
-                                    &#9734; <!-- This is the HTML entity for an empty star -->
+                                    <span class="star">&#9734;</span> <!-- This is the HTML entity for an empty star -->
                                 <?php endfor; ?>
+                            </p>
                             </p>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
-            <a href="ajout-commentaire.php?id=<?php echo $film['id']?>" class="btn btn-primary">Ajouter un commentaire</a>
 
-            <a href="../index.php" class="btn btn-primary mt-3">Retour</a>
         </div>
     </div>
 </div>

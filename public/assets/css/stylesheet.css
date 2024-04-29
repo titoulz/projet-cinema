@@ -52,3 +52,9 @@ body{
 body {
     padding-top: 56px; /* Mettez ici la hauteur de votre navbar */
 }
+.star {
+    color: yellow;
+}
+.average-star {
+    color: yellow;
+}
