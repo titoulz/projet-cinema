@@ -1,5 +1,6 @@
 <?php
 echo(PHP_EOL);
+session_start();
 //1.connexion a la DB
 require_once "../../src/config/db-config.php";
 require_once "header.php";
@@ -46,11 +47,7 @@ if (empty($mdpconfirm)){
 }
 if ($mdp != $mdpconfirm){
     $erreurs['mdpconfirm'] = "les mots de passe ne correspondent pas";
-} else {
-    $mdp = password_hash($mdp, PASSWORD_DEFAULT);
 }
-
-//4. Traiter les données
 
 //verifier si l'email existe et refuser l'inscription si c'est le cas
 //verifier si les mots de passe correspondent
@@ -62,8 +59,13 @@ if ($userExists){
     $erreurs['email'] = "cet email est déjà utilisé";
 } else {
     if (empty($erreurs)){
+        $_SESSION['debug_password'] = $mdp; // Store the plaintext password in a session variable
+        $mdp = password_hash($mdp, PASSWORD_DEFAULT);
         register($pseudo, $email, $mdp);
         echo PHP_EOL."l'inscription a été effectuée avec succès";
+        session_write_close(); // Save the session data before redirecting
+        header('Location: connexion.php');
+        exit; // Ensure no further code is executed
     }
 }
 

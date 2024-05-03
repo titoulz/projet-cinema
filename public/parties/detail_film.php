@@ -2,7 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>index.html</title>
+    <title>Detail Film</title>
+    <style>
+        body {
+            color: white !important;
+        }
+    </style>
 </head>
 <body>
 <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
@@ -46,8 +51,10 @@ $comments = getCommentsByMovieId($movieId); // Get the comments for this movie
             <p><strong>Pays :</strong> 🌍 <?php echo $film['pays'] ?>🌍</p>
             <p><strong>Synopsys : <br></strong> <?php echo $film['résumé'] ?></p>
 
-    <a href="ajout-commentaire.php?id=<?php echo $film['id']?>" class="btn btn-primary">Ajouter un commentaire</a>
-    <a href="../index.php" class="btn btn-primary mt-3">Retour</a>
+            <div class="button-container" style="display: flex; justify-content: space-between;">
+                <a href="ajout-commentaire.php?id=<?php echo $film['id']?>" class="btn btn-primary">Ajouter un commentaire</a>
+                <a href="../index.php" class="btn btn-primary mt-3">Retour</a>
+            </div>
             <div class="container mt-5">
                 <?php
                 $averageRating = getAverageRatingByMovieId($movieId);

@@ -1,7 +1,9 @@
 <?php
 session_start();
-$_SESSION['email'] = 'test@example.com'; // Replace with a valid user ID from your database
-//connexion à la base de données
+if (isset($_SESSION['debug_password'])) {
+    echo "Password before hashing: " . $_SESSION['debug_password'];
+    unset($_SESSION['debug_password']); // Make sure to unset the session variable after using it
+}//connexion à la base de données
 require_once "../../src/config/db-config.php";
 ?>
 
@@ -33,29 +35,49 @@ if (empty($mdp)){
 // comparer l'email bdd avec l'email formulaire
 // comparer a l'aide de la fonction password_verify le mdp bdd avec le mdp formulaire
 //debug mode
+// ... Rest of your code ...
+
 if (empty($erreurs)){
     $user = userExiste($email);
-    echo "User record: ";
-    var_dump($user); // Debug: Check the value of $user
-    if ($user && array_key_exists('mdp', $user) && password_verify($mdp, $user['mdp'])) {
-        $_SESSION=[
-            'email' => $email,
-            'mdp' => $mdp,
-        ];
-        header('Location: ../index.php' );
-        exit;
-    } else {
-        echo "Hashed password: ";echo PHP_EOL;
-       echo (password_hash($mdp, PASSWORD_DEFAULT));
-        echo "Email User: ";
-        var_dump($email); // Debug: Check the value of $email User
-        echo "Password User: ";
-        var_dump($mdp); // Debug: Check the value of $mdp User
-        echo "Result of password_verify: ";
-        var_dump(password_verify($mdp, $user['mdp'])); // Debug: Check the result of password_verify
-        $_SESSION['error'] = "Email ou mot de passe incorrect";
+    echo "<pre>User record: ";
+    print_r($user); // Debug: Check the value of $user
+    echo "</pre>";
+
+    if ($user && array_key_exists('mdp', $user)) {
+        if (password_verify($mdp, $user['mdp'])) {
+            $_SESSION=[
+                'email' => $email,
+                'mdp' => $mdp,
+            ];
+            header('Location: ../index.php' );
+            exit;
+        } else {
+            echo "<pre>Hashed password: ";
+            print_r(password_hash($mdp, PASSWORD_DEFAULT));
+            echo "</pre>";
+            echo "<pre>Email User: ";
+            print_r($email); // Debug: Check the value of $email User
+            echo "</pre>";
+            echo "<pre>Password User: ";
+            print_r($mdp); // Debug: Check the value of $mdp User
+            echo "</pre>";
+            echo "<pre>Result of password_verify: ";
+            print_r(password_verify($mdp, $user['mdp'])); // Debug: Check the result of password_verify
+            echo "</pre>";
+            echo "<pre>User's hashed password: ";
+            print_r($user['mdp']); // Debug: Check the value of $user['mdp']
+            echo "</pre>";
+            if (isset($_SESSION['debug_password'])) { // Check if the session variable is set
+                echo "<pre>Debug Password: ";
+                print_r($_SESSION['debug_password']); // Debug: Check the value of $_SESSION['debug_password']
+                echo "</pre>";
+            }
+            $_SESSION['error'] = "Email ou mot de passe incorrect";
+        }
     }
 }
+
+// ... Rest of your code ...
 
 //regarder si le tableau $user est vide et aller chercher les données de l'utilisateur
 //$user = userExiste();
